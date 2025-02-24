@@ -1,12 +1,6 @@
 const mongoose = require('mongoose');
 
 const levelSchema = new mongoose.Schema({
-    levelId: {
-        type: Number,
-        required: true,
-        unique: true
-    },
-
     number: {
         type: Number,
         required: true,
