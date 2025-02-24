@@ -1,0 +1,47 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Deploy to Server
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        script_stop: true
+        script: |
+          set -e
+
+          # Vérifier les versions de Node.js et npm
+          echo "Node.js version: $(node -v)"
+          echo "npm version: $(npm -v)"
+          
+          # Cloner le dépôt
+          git clone https://github.com/eliooooooo/DevJourneyAPI.git
+          
+          # Copier les fichiers et changer de répertoire
+          cp -r DevJourneyAPI /var/www
+          rm -rf DevJourneyAPI
+          cd /var/www/DevJourneyAPI
+
+          # Afficher les fichiers et permissions dans le répertoire www avant l'installation
+          echo "Contenu du répertoire www avant l'installation:"
+          ls -l
+          
+          # Installer les dépendances
+          npm ci
+          
+          # Afficher les fichiers et permissions dans le répertoire www après l'installation
+          echo "Contenu du répertoire www après l'installation:"
+          ls -l
