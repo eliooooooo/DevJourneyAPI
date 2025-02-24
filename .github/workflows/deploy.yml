@@ -46,3 +46,6 @@ jobs:
           # Afficher les fichiers et permissions dans le répertoire www après l'installation
           echo "Contenu du répertoire www après l'installation:"
           ls -l
+
+          # Démarrer le serveur
+          nohup node server.js
