@@ -7,6 +7,12 @@ const levelSchema = new mongoose.Schema({
         unique: true
     },
 
+    number: {
+        type: Number,
+        required: true,
+        unique: true
+    },
+
     difficulty: {
         type: String,
         required: true,
