@@ -4,13 +4,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const crypto = require('crypto');
 
-const Category = require('./models/categoryModel');
-const Event = require('./models/eventModel');
-const Pass = require('./models/passModel');
-const Showtime = require('./models/showtimeModel');
-const User = require('./models/userModel');
-const Program = require('./models/programModel');
-
 dotenv.config();
 let db_user = process.env.DB_USER;
 let db_password = process.env.DB_PASSWORD;
