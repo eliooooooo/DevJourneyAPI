@@ -4,10 +4,13 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const crypto = require('crypto');
 
+const User = require('./Models/userModel');
+const Level = require('./Models/levelModel');
+
 dotenv.config();
 let db_user = process.env.DB_USER;
 let db_password = process.env.DB_PASSWORD;
-const uri = `mongodb+srv://${db_user}:${db_password}@mongotable.rbtmi.mongodb.net/?retryWrites=true&w=majority&appName=MongoTable`;
+const uri = `mongodb+srv://${db_user}:${db_password}@cluster0.xrv5p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 const app = express();
 app.use(cors({
