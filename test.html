@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://127.0.0.1:3000/event/add">test</a>
+    <div>
+        test
+    </div>
+    <div id="user">
+        add user
+    </div>
+
+    <script>
+
+        let test = document.querySelector('div');
+        let request = {
+            "email": "eliott.burkle@gmail.com",
+            "username": "Bubule",
+            "password": "Eliott-007",
+            "userId": 1
+        };
+
+        console.log(request);
+        test.addEventListener('click', () => {
+            fetch('http://127.0.0.1:3335/register/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(request)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        });
+    </script>
+</body>
+</html>

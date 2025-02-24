@@ -19,6 +19,9 @@ app.use(cors({
     credentials: true
 }));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Users routes
 
 app.get('/users', async (req, res) => {
