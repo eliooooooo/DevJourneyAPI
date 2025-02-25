@@ -182,22 +182,6 @@ mongoose.connect(uri)
         console.log('Serveur démarré sur le port 3332');
     });
 })
-.then(() => {
-    async function removeUserIdIndex() {
-        try {
-          // Drop the index on userId
-          await User.collection.dropIndex('userId_1');
-          await Level.collection.dropIndex('levelId_1');
-          console.log('Index userId_1 dropped successfully');
-        } catch (error) {
-          console.error('Error dropping index:', error);
-        } finally {
-          // Close the connection
-          mongoose.connection.close();
-        }
-      }
-    removeUserIdIndex();
-})
 .catch((error) => {
     console.error('Erreur de connexion à la base de données', error);
 });
