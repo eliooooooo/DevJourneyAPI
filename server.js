@@ -178,8 +178,8 @@ mongoose.connect(uri)
 .then(() => {
     console.log('Connexion à la base de données réussie');
     // Démarrage du serveur
-    app.listen(3335, () => {
-        console.log('Serveur démarré sur le port 3335');
+    app.listen(3332, () => {
+        console.log('Serveur démarré sur le port 3332');
     });
 })
 .then(() => {
