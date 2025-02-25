@@ -102,9 +102,9 @@ app.post('/levels', async (req, res) => {
     }
 });
 
-app.get('/levels/:levelId', async (req, res) => {
+app.get('/levels/:id', async (req, res) => {
     try {
-        const level = await Level.findOne({ levelId: req.params.levelId });
+        const level = await Level.findOne({ _id: req.params.id });
         if (!level) {
             return res.status(404).send('Level not found');
         }
@@ -114,10 +114,10 @@ app.get('/levels/:levelId', async (req, res) => {
     }
 });
 
-app.put('/levels/:levelId', async (req, res) => {
+app.put('/levels/:id', async (req, res) => {
     try {
         const level = await Level
-        .findOneAndUpdate({ levelId: req.params.levelId },Level, { new: true });
+        .findOneAndUpdate({ _id: req.params.id },Level, { new: true });
         if (!level) {
             return res.status(404).send('Level not found');
         }
@@ -127,10 +127,10 @@ app.put('/levels/:levelId', async (req, res) => {
     }
 });
 
-app.delete('/levels/:levelId', async (req, res) => {
+app.delete('/levels/:id', async (req, res) => {
     try {
         const level = await Level
-        .findOneAndDelete({ levelId: req.params.levelId });
+        .findOneAndDelete({ _id: req.params.id });
         if (!level) {
             return res.status(404).send('Level not found');
         }
