@@ -7,6 +7,11 @@ const levelSchema = new mongoose.Schema({
         unique: true
     },
 
+    title: {
+        type: String,
+        required: false
+    },
+
     difficulty: {
         type: String,
         required: true,
@@ -28,6 +33,11 @@ const levelSchema = new mongoose.Schema({
     question: {
         type: String,
         required: true
+    },
+
+    subQuestion: {
+        type: String,
+        required: false
     },
 
     answer: {
