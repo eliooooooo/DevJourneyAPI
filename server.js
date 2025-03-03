@@ -55,10 +55,9 @@ app.get('/users/:userId', async (req, res) => {
     }
 });
 
-app.put('/users/:userId', async (req, res) => {
+app.put('/users/:id', async (req, res) => {
     try {
-        const user = await User
-        .findOneAndUpdate({ userId: req.params.userId }, req.body, { new: true });
+        const user = await User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true });
         if (!user) {
             return res.status(404).send('User not found');
         }
