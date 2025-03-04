@@ -107,7 +107,8 @@ app.get('/levels/:id', async (req, res) => {
         if (!level) {
             return res.status(404).send('Level not found');
         }
-        res.json(level);
+        const nextLevel = await Level.findOne({ number: level.number + 1 });
+        res.json({ level, nextLevelId: nextLevel ? nextLevel._id : null });
     } catch (error) {
         res.status(500).send(error);
     }
